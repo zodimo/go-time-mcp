@@ -1,5 +1,47 @@
 # ACTIVE CONTEXT
 
+## Project Information
+- **Project**: go-time-mcp MCP server
+- **Repository**: /home/jaco/SecondBrain/1-Projects/GoProjects/Development/go-time-mcp
+- **Language**: Go 1.24+
+- **Framework**: mcp-go v0.29.0
+
+## Current State
+- **Last Completed Task**: SSE server context cancellation bug fix (Level 1) - ARCHIVED
+- **Status**: Ready for next task
+- **Archive Reference**: [memory-bank/archive/archive-sse-context-fix.md](memory-bank/archive/archive-sse-context-fix.md)
+
+## Project Structure
+- `cmd/` - Command line entry points
+- `internal/` - Internal packages
+  - `config/` - Configuration management
+  - `server/` - MCP server implementation
+  - `services/` - Core time service implementations
+- `main.go` - Main application entry point
+- `go.mod` - Go module definition
+
+## Recent Improvements
+- Added proper context cancellation handling to SSE transport
+- Enhanced main.go to distinguish between normal shutdown and errors
+- Improved exit behavior with proper exit codes
+- Added testing for context cancellation scenarios
+
+## Next Steps
+- Consider reviewing other transports for similar issues
+- Add more comprehensive tests for shutdown scenarios
+- Document shutdown behavior
+- Consider implementing a cleanup hook system
+
+## Mode Status
+- **Current Mode**: NONE (Ready for VAN mode to begin next task)
+- **Last Mode**: ARCHIVE (Completed archive of SSE context cancellation bug fix)
+
+## Notes
+- Remember to follow the established architecture pattern when making changes
+- Maintain the clean separation between transport and business logic
+- Continue the pattern of comprehensive testing for all changes
+- Ensure all components properly handle context cancellation
+
 ## Current Focus
 **TASK COMPLETED**: Level 1 Quick Bug Fix - SSE server context cancellation issue has been successfully resolved.
 
