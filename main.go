@@ -2,40 +2,61 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
-	"time"
+	"os"
+	"os/signal"
+	"syscall"
 
-	"github.com/mark3labs/mcp-go/server"
+	"github.com/zodimo/go-time-mcp/internal/config"
+	"github.com/zodimo/go-time-mcp/internal/server"
+	"github.com/zodimo/go-time-mcp/internal/services"
 )
 
 func main() {
-	// Create a new MCP server
-	s := server.NewMCPServer(
-		"go-time-mcp",
-		"1.0.0",
-		"MCP server for time services with timezone and format support",
-	)
-
-	// TODO: Register time-related tools
-	// - getCurrentTime tool
-	// - getUnixTimestamp tool
-	// - formatTime tool
-
-	// TODO: Start server in appropriate mode (SSE or stdio)
-	// Based on command line arguments or environment variables
-
-	ctx := context.Background()
-
-	// Placeholder - will be implemented based on mode selection
-	fmt.Println("go-time-mcp server starting...")
-
-	// TODO: Implement actual server startup logic
-	log.Printf("Server initialized at %s", time.Now().Format(time.RFC3339))
-
-	// Keep server running
-	select {
-	case <-ctx.Done():
-		log.Println("Server shutting down...")
+	// Load configuration
+	cfg, err := config.Load()
+	if err != nil {
+		log.Fatalf("Failed to load configuration: %v", err)
 	}
+
+	// Create time service
+	timeService := services.NewTimeService()
+
+	// Create MCP server
+	mcpServer, err := server.NewServer(cfg, timeService)
+	if err != nil {
+		log.Fatalf("Failed to create MCP server: %v", err)
+	}
+
+	// Create context for graceful shutdown
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// Handle shutdown signals
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
+
+	go func() {
+		<-sigChan
+		log.Println("Shutdown signal received, stopping server...")
+		cancel()
+	}()
+
+	// Start the server
+	log.Printf("Starting go-time-mcp server in %s mode", cfg.Mode)
+	if err := mcpServer.Start(ctx); err != nil {
+		// Check if the error is due to context cancellation (graceful shutdown)
+		if err == context.Canceled || err == context.DeadlineExceeded {
+			log.Println("Server shutdown requested")
+		} else {
+			log.Fatalf("Server failed: %v", err)
+		}
+	}
+
+	// Stop the server
+	if err := mcpServer.Stop(); err != nil {
+		log.Printf("Error stopping server: %v", err)
+	}
+
+	log.Println("Server stopped gracefully")
 }
