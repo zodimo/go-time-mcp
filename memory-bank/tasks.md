@@ -593,3 +593,25 @@ All phases of the Level 3 go-time-mcp MCP server implementation have been comple
 
 ## 🎉 TASK FULLY COMPLETED AND ARCHIVED
 **Next Action**: To start a new task, use VAN MODE
+
+## Current Mode: VAN COMPLETE
+**Objective**: README update with installation instructions and MCP configuration examples
+
+## Task Checklist
+
+### ✅ COMPLETED - VAN MODE README UPDATE
+- [x] Analyzed current README content
+- [x] Reviewed project structure and configuration options  
+- [x] Identified available MCP tools (getCurrentTime, getUnixTimestamp)
+- [x] Updated README with comprehensive content:
+  - [x] Installation instructions using `go install`
+  - [x] From source installation instructions
+  - [x] Command line usage examples
+  - [x] Environment variable configuration
+  - [x] MCP configuration examples for Cursor.com (stdio and SSE)
+  - [x] MCP configuration examples for VSCode (stdio and SSE)
+  - [x] Detailed tool documentation
+  - [x] Supported timezone formats
+  - [x] Time format patterns with examples
+  - [x] Configuration options table
+  - [x] Development instructions

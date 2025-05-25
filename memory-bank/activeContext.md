@@ -7,9 +7,9 @@
 - **Framework**: mcp-go v0.29.0
 
 ## Current State
-- **Last Completed Task**: SSE server context cancellation bug fix (Level 1) - ARCHIVED
+- **Last Completed Task**: README update with installation and MCP configuration (VAN mode) - COMPLETE
 - **Status**: Ready for next task
-- **Archive Reference**: [memory-bank/archive/archive-sse-context-fix.md](memory-bank/archive/archive-sse-context-fix.md)
+- **Current Task**: Documentation enhancement completed successfully
 
 ## Project Structure
 - `cmd/` - Command line entry points
@@ -19,22 +19,25 @@
   - `services/` - Core time service implementations
 - `main.go` - Main application entry point
 - `go.mod` - Go module definition
+- `README.md` - Comprehensive documentation with installation and usage
 
 ## Recent Improvements
-- Added proper context cancellation handling to SSE transport
-- Enhanced main.go to distinguish between normal shutdown and errors
-- Improved exit behavior with proper exit codes
-- Added testing for context cancellation scenarios
+- ✅ Comprehensive README documentation completed
+- ✅ Installation instructions with `go install` command
+- ✅ MCP configuration examples for both Cursor.com and VSCode
+- ✅ Both stdio and SSE mode configurations provided
+- ✅ Detailed tool documentation (getCurrentTime, getUnixTimestamp)
+- ✅ Timezone and format pattern documentation
+- ✅ Command line and environment variable usage examples
 
 ## Next Steps
-- Consider reviewing other transports for similar issues
-- Add more comprehensive tests for shutdown scenarios
-- Document shutdown behavior
-- Consider implementing a cleanup hook system
+- Ready for next development task
+- Consider adding more MCP tools if needed
+- Possible documentation improvements based on user feedback
 
 ## Mode Status
-- **Current Mode**: NONE (Ready for VAN mode to begin next task)
-- **Last Mode**: ARCHIVE (Completed archive of SSE context cancellation bug fix)
+- **Current Mode**: VAN COMPLETE (README update task finished)
+- **Last Mode**: VAN (Documentation update)
 
 ## Notes
 - Remember to follow the established architecture pattern when making changes
