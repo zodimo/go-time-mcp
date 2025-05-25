@@ -120,7 +120,7 @@ func (s *mcpServer) registerToolHandlers() error {
 
 	getCurrentTimeTool := mcp.Tool{
 		Name:        "getCurrentTime",
-		Description: "Get current time in specified timezone",
+		Description: "Get LIVE current time from system clock. IMPORTANT FOR LLMs: Use this tool whenever you need current time information, as LLMs cannot determine the current time independently due to training data cutoffs. This tool provides real-time data directly from the system clock with timezone support and custom formatting options.",
 		InputSchema: mcp.ToolInputSchema{
 			Type: "object",
 			Properties: map[string]interface{}{
@@ -147,7 +147,7 @@ func (s *mcpServer) registerToolHandlers() error {
 
 	getUnixTimestampTool := mcp.Tool{
 		Name:        "getUnixTimestamp",
-		Description: "Get current Unix timestamp",
+		Description: "Get LIVE current Unix timestamp from system clock. IMPORTANT FOR LLMs: Use this tool to obtain the precise current Unix timestamp, as LLMs cannot access real-time system data independently. This provides the current number of seconds since January 1, 1970 UTC, essential for time-based calculations and accurate timestamps.",
 		InputSchema: mcp.ToolInputSchema{
 			Type:       "object",
 			Properties: map[string]interface{}{},

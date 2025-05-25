@@ -615,3 +615,48 @@ All phases of the Level 3 go-time-mcp MCP server implementation have been comple
   - [x] Time format patterns with examples
   - [x] Configuration options table
   - [x] Development instructions
+
+## Current Mode: VAN (COMPLETED)
+**Objective**: ✅ COMPLETED - Enhanced tool descriptions for better LLM usage clarity
+
+## Task Checklist
+
+### ✅ COMPLETED - VAN MODE ENHANCEMENT
+- [x] **Tool Description Enhancement Task**
+  - [x] Analyzed current tool descriptions for LLM clarity issues
+  - [x] Identified need for LIVE/REAL-TIME emphasis
+  - [x] Enhanced getCurrentTime tool description with LLM guidance
+  - [x] Enhanced getUnixTimestamp tool description with LLM guidance
+  - [x] Implemented prompt engineering improvements
+  - [x] Emphasized LLM training data limitations regarding current time
+  - [x] Added clear usage guidance for when LLMs should use these tools
+
+### ✅ TOOL DESCRIPTION IMPROVEMENTS IMPLEMENTED
+
+**getCurrentTime Tool:**
+- **OLD**: "Get current time in specified timezone"
+- **NEW**: "Get LIVE current time from system clock. IMPORTANT FOR LLMs: Use this tool whenever you need current time information, as LLMs cannot determine the current time independently due to training data cutoffs. This tool provides real-time data directly from the system clock with timezone support and custom formatting options."
+
+**getUnixTimestamp Tool:**
+- **OLD**: "Get current Unix timestamp"  
+- **NEW**: "Get LIVE current Unix timestamp from system clock. IMPORTANT FOR LLMs: Use this tool to obtain the precise current Unix timestamp, as LLMs cannot access real-time system data independently. This provides the current number of seconds since January 1, 1970 UTC, essential for time-based calculations and accurate timestamps."
+
+### 📋 KEY IMPROVEMENTS MADE
+1. **LIVE/REAL-TIME Emphasis**: Added clear indication that tools provide live system data
+2. **LLM-Specific Guidance**: Explicit instructions for when LLMs should use these tools
+3. **Training Data Limitation Awareness**: Clarified that LLMs cannot determine current time due to training cutoffs
+4. **System Clock Source**: Specified that data comes directly from system clock
+5. **Use Case Clarification**: Added context for timezone support, formatting, and timestamp calculations
+
+## ✅ VAN MODE TASK COMPLETED SUCCESSFULLY
+
+**Files Modified:**
+- `internal/server/server.go` - Updated tool descriptions (lines 109-111 and 149-151)
+
+**Result**: Tool descriptions now provide clear, LLM-friendly guidance that emphasizes:
+- The need for LLMs to use these tools for current time data
+- The live/real-time nature of the data
+- Why LLMs cannot determine current time independently
+- Specific use cases and capabilities
+
+**Ready for**: Next development task or continued MCP server enhancement
