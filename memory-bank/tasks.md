@@ -69,9 +69,9 @@
    - Run `go vet` for code quality checks
 
 2. **Multi-Version Testing**:
-   - Test against Go 1.23 (previous stable)
-   - Test against Go 1.24 (latest stable)
-   - Matrix strategy for version coverage
+   - Test against Go 1.24 (minimum required version)
+   - Future: Add Go 1.25 when released (August 2025)
+   - Focused testing on supported versions only
 
 3. **CI/CD Integration**:
    - GitHub Actions workflow integration
@@ -100,6 +100,7 @@
   - Server layer: ✅ Basic coverage
   - Config layer: ❌ No tests (acceptable for Level 2)
 - **Test Commands**: `go test ./...` works successfully
+- **Go Version**: Minimum 1.24 (specified in go.mod) - leverages latest performance improvements
 
 ## COMPONENT ANALYSIS
 
