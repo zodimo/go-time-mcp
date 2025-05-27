@@ -3,6 +3,7 @@ package services
 import (
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -178,20 +179,8 @@ func convertToGoTimeFormat(format string) string {
 
 // replaceAll is a simple string replacement function
 func replaceAll(s, old, new string) string {
-	// Simple implementation - in production you might want to use strings.ReplaceAll
-	// or a more sophisticated pattern matching
-	result := ""
-	i := 0
-	for i < len(s) {
-		if i+len(old) <= len(s) && s[i:i+len(old)] == old {
-			result += new
-			i += len(old)
-		} else {
-			result += string(s[i])
-			i++
-		}
-	}
-	return result
+	// Use Go's standard strings.ReplaceAll for reliable replacement
+	return strings.ReplaceAll(s, old, new)
 }
 
 // containsDangerousPatterns checks for potentially dangerous format patterns
